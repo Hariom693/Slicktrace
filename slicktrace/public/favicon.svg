@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+  </defs>
+  <!-- Signal waves -->
+  <path d="M16 20 Q10 14 16 8 Q22 14 16 20Z" fill="white" opacity="0.9"/>
+  <circle cx="16" cy="22" r="1.5" fill="white"/>
+  <!-- Ocean wave -->
+  <path d="M6 26 Q10 23 14 26 Q18 29 22 26 Q26 23 28 26" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/>
+</svg>

@@ -1,0 +1,24 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function analyst() {
+      return signedIn()
+        && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role in ['admin', 'analyst'];
+    }
+
+    match /incidents/{incidentId}/{allPaths=**} {
+      allow read: if signedIn();
+      allow write: if analyst() && request.resource.size < 25 * 1024 * 1024;
+    }
+
+    match /users/{userId}/{allPaths=**} {
+      allow read: if signedIn() && request.auth.uid == userId;
+      allow write: if signedIn() && request.auth.uid == userId
+        && request.resource.size < 10 * 1024 * 1024;
+    }
+  }
+}
